@@ -60,7 +60,8 @@ location is where to look. How-to lives in the skills.
 
 **B. Agent Substrate** (details: `/substrate`)
 - `internal/substrate/client.go` is the only non-test file that constructs
-  `ateapipb.NewControlClient`; new Control API calls go there.
+  `ateapipb.NewControlClient`; new Control API calls go there. The protos are
+  `go.ate.dev/substrate/api/ateapi/v1`, aliased to `ateapipb` on import.
 - `api.ate-system.svc`, `atenet-router.ate-system.svc`, and namespace
   `ate-system` are hard-coded across 10 files (list in `/substrate`).
 - Substrate rejects tag-only images; `spec.image` must be digest-pinned

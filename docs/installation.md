@@ -16,13 +16,14 @@ These are the Substrate dependencies recorded in each AX ref's `go.mod`.
 They identify source pins; they do not certify an end-to-end deployment or
 compatibility with an entire Substrate release series. The historical
 pseudo-versions below refer to commits; the development baseline uses the
-published Substrate v0.6.0 tag.
+published Substrate v1.0.0-rc.1 tag.
 
 | AX ref | Substrate module version | Substrate checkout |
 |---|---|---|
 | [v0.3.0](https://github.com/google/ax/blob/v0.3.0/go.mod) | `v0.0.0-20260911232748-672533541dbf` | [`672533541dbf`](https://github.com/agent-substrate/substrate/commit/672533541dbfcd29084e4de2475267088bda3651) |
 | [v0.3.1](https://github.com/google/ax/blob/v0.3.1/go.mod) | `v0.0.0-20260911232748-672533541dbf` | [`672533541dbf`](https://github.com/agent-substrate/substrate/commit/672533541dbfcd29084e4de2475267088bda3651) |
 | [Development baseline `a496fc1ff1cf`](https://github.com/google/ax/blob/a496fc1ff1cf9bea4c34924348e4119172cfea5b/go.mod) | `v0.6.0` | [`d3f2363590a1`](https://github.com/agent-substrate/substrate/commit/d3f2363590a11b2f50489971985ba033b4c9eff7) |
+| Development baseline `main` | `v1.0.0-rc.1` | [`f86fde9dfb54`](https://github.com/agent-substrate/substrate/commit/f86fde9dfb5424c8d16f613de80469bdbef06541) |
 
 The development baseline uses ax-server and PostgreSQL. v0.3.0 and v0.3.1 use
 Redis and a separate ax-controller; use their own checkouts' manifests and build

@@ -18,8 +18,16 @@ and `hack/setup-e2e-kind.sh` if they look stale.
 
 | Module | Pinned | Provides | Imported by |
 |---|---|---|---|
-| `go.ate.dev/substrate` | `v0.6.0` | Control API protos `pkg/proto/ateapipb` (atespaces, actor templates, actors, suspend/resume) | `internal/substrate`, `internal/server`, `internal/controller`, `test/e2e` |
-| `github.com/agent-substrate/env` | `v0.0.11-0.20260912052224-4468a200b170` (pseudo-version) | Guest services served inside the sandbox (process exec + file system gRPC) and `proto/ateenv/v1alpha` | `internal/guest`, `internal/metadata` |
+| `go.ate.dev/substrate` | `v1.0.0-rc.1` | Control API protos `api/ateapi/v1`, imported as `ateapipb` (atespaces, actor templates, actors, suspend/resume) | `internal/substrate`, `internal/server`, `internal/controller`, `test/e2e` |
+| `github.com/agent-substrate/env` | `v0.0.11-0.20261027182621-281e86085bb0` (pseudo-version) | Guest services served inside the sandbox (process exec + file system gRPC) and `proto/ateenv/v1alpha` | `internal/guest`, `internal/metadata` |
+
+AX imports exactly one Substrate package, the Control API protos. The
+`v1.0.0-rc.1` bump moved it from `pkg/proto/ateapipb` (package `ateapipb`) to
+`api/ateapi/v1` (package `ateapi`), so the nine imports are aliased to keep
+call sites unchanged: `ateapipb "go.ate.dev/substrate/api/ateapi/v1"`. The RPC
+and message surface AX uses is unchanged; the release also adds `RevertActor`
+and `RuntimeOverhead`, and renames `SnapshotStorageStatus` to
+`SnapshotStorageState` (unused by AX).
 
 There is no `replace` directive for either module. Local hacking against a
 Substrate checkout goes through `SUBSTRATE_DIR` in E2E (section 5).
